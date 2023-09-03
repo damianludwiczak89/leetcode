@@ -5,14 +5,15 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        
-        for i in range(len(nums)-1):
-            for j in range(len(nums)-1):
-                if i == j+1:
-                    continue
-                if nums[i] + nums[j+1] == target:  
-                    return [i, j+1]
 
+        dic = {}
+
+        for i, n in enumerate(nums):
+            check = target - n
+            if check in dic:
+                return [dic[check], i]
+            dic[n] = i
+        return
 '''
 
 1. Two Sum
